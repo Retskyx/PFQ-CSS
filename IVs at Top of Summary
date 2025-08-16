@@ -1,0 +1,22 @@
+// ==UserScript==
+// @name     PFQ Stats Displayed on Top
+// @version  1
+// @grant    none
+// @match https://pokefarm.com/summary/*
+// ==/UserScript==
+
+
+window.addEventListener('load', function() {
+    const tableToMove = document.querySelector('#summary_col2 > div > div:nth-child(6) > table');
+    const referenceElement = document.querySelector('#pkmnspecdata');
+    if (tableToMove && referenceElement) {
+        referenceElement.parentNode.insertBefore(tableToMove, referenceElement);
+    }
+}, false);
+window.addEventListener('load', function() {
+    const tableToMove = document.querySelector('#summary_col2 > div > div:nth-child(8) > table');
+    const referenceElement = document.querySelector('#pkmnspecdata');
+    if (tableToMove && referenceElement) {
+        referenceElement.parentNode.insertBefore(tableToMove, referenceElement);
+    }
+}, false);
