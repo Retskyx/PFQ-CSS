@@ -1,0 +1,104 @@
+// ==UserScript==
+// @name         Preview Pokémon IVs on hover
+// @namespace    http://tampermonkey.net/
+// @version      2.8
+// @description  Preview Pokémon IVs on hover
+// @match        *://pokefarm.com/*
+// @grant        GM_xmlhttpRequest
+// @connect      pokefarm.com
+// ==/UserScript==
+ 
+(function() {
+    'use strict';
+    const previewBox = document.createElement('div');
+    previewBox.id = 'pfPreviewBox';
+    previewBox.style.position = 'absolute';
+    previewBox.style.width = '300px';
+    previewBox.style.padding = '10px';
+    previewBox.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+    previewBox.style.border = 'none';
+    previewBox.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
+    previewBox.style.zIndex = '9999';
+    previewBox.style.display = 'none';
+    previewBox.style.fontFamily = 'Arial, sans-serif';
+    previewBox.style.fontSize = '14px';
+    previewBox.innerHTML = '<table style="width: 100%; border-collapse: collapse;"></table>';
+    document.body.appendChild(previewBox);
+ 
+    function loadPreview(url) {
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: url,
+            onload: function(response) {
+                if (response.status === 200) {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(response.responseText, 'text/html');
+                    const targetElement = Array.from(doc.querySelectorAll('th')).find(th => th.innerText.includes('IVs'));
+                    if (targetElement) {
+                        const tdElements = [];
+                        let nextElement = targetElement.nextElementSibling;
+                        for (let i = 0; i < 7; i++) {
+                            if (nextElement) {
+                                let value = nextElement.innerHTML;
+                                if (i < 6 && value === '31') value = `<span style="color: orange;">${value}</span>`;
+                                else if (i === 6 && value === '186') value = `<strong style="color: red;">${value}</strong>`;
+                                tdElements.push(value);
+                                nextElement = nextElement.nextElementSibling;
+                            }
+                        }
+                        const table = previewBox.querySelector('table');
+                        table.innerHTML = `
+                            <tr style="background-color: #202020;">
+                                <th><img src="https://static.pokefarm.com/img/types/stat_hp.png?t=1439908989" alt="HP"></th>
+                                <th><img src="https://static.pokefarm.com/img/types/stat_atk.png?t=1439908989" alt="Atk"></th>
+                                <th><img src="https://static.pokefarm.com/img/types/stat_def.png?t=1439908989" alt="Def"></th>
+                                <th><img src="https://static.pokefarm.com/img/types/stat_sat.png?t=1439908989" alt="Sp Atk"></th>
+                                <th><img src="https://static.pokefarm.com/img/types/stat_sdf.png?t=1439908989" alt="Sp Def"></th>
+                                <th><img src="https://static.pokefarm.com/img/types/stat_spd.png?t=1439908989" alt="Spd"></th>
+                                <th>Sum</th>
+                            </tr>
+                            <tr style="background-color: #202020;">
+                                <td>${tdElements[0] || ''}</td>
+                                <td>${tdElements[1] || ''}</td>
+                                <td>${tdElements[2] || ''}</td>
+                                <td>${tdElements[3] || ''}</td>
+                                <td>${tdElements[4] || ''}</td>
+                                <td>${tdElements[5] || ''}</td>
+                                <td>${tdElements[6] || ''}</td>
+                            </tr>
+                        `;
+                        if (tdElements[6] && tdElements[6].includes('186')) table.style.boxShadow = '0 0 10px red, 0 0 20px red';
+                        else table.style.boxShadow = 'none';
+                        previewBox.style.display = 'block';
+                    } else {
+                        previewBox.style.display = 'none';
+                    }
+                } else previewBox.style.display = 'none';
+            },
+            onerror: function() { previewBox.style.display = 'none'; }
+        });
+    }
+ 
+    document.addEventListener('mouseover', function(event) {
+        const target = event.target.closest('a');
+        if (target && target.href.startsWith('https://pokefarm.com/summary/')) {
+            loadPreview(target.href);
+            previewBox.style.left = `${event.pageX + 10}px`;
+            previewBox.style.top = `${event.pageY + 10}px`;
+        }
+    });
+ 
+    document.addEventListener('mouseout', function(event) {
+        const target = event.target.closest('a');
+        if (target && target.href.startsWith('https://pokefarm.com/summary/')) {
+            previewBox.style.display = 'none';
+            previewBox.innerHTML = '<table style="width: 100%; border-collapse: collapse;"></table>';
+        }
+    });
+ 
+    previewBox.addEventListener('mouseenter', function() { previewBox.style.display = 'block'; });
+    previewBox.addEventListener('mouseleave', function() {
+        previewBox.style.display = 'none';
+        previewBox.innerHTML = '<table style="width: 100%; border-collapse: collapse;"></table>';
+    });
+})();
