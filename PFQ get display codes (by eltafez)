@@ -1,0 +1,60 @@
+// ==UserScript==
+// @name         Get Display Codes
+// @namespace    http://pfq.eltafez.com/
+// @version      2024-06-17
+// @description  Get display codes for multiple Pokémon at once.
+// @author       Eltafez
+// @match        https://pokefarm.com/fields
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pokefarm.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // OPTIONS: ONLY USE THE NUMBER
+    // 1 = platform code
+    // 2 = pkmnpanel code
+    const codeOption = 1;
+
+    // ======================
+
+    $(document).on('click', 'label[data-menu="bulkmove"]', function() { moveDialogClick(); });
+    $(document).on('click', '#btnDisplaycodes', function() { btnDisplaycodesClick(); });
+
+    function moveDialogClick() {
+        if($("h3:contains(Bulk move)").length) {
+            if(!$("#btnDisplaycodes").length ) {
+                $("<button id='btnDisplaycodes' style=''>Get display codes</button>").insertBefore("button[data-cancelbutton]");
+            }
+        }
+    }
+
+    function btnDisplaycodesClick() {
+        const checkedMon = $('input[name="masspkmn"]:checked');
+        let message = "Nothing selected!";
+
+        if(checkedMon.length > 0) {
+            let copyText = "";
+            checkedMon.each(function() {
+                const summary = $(this).val();
+                switch(codeOption) {
+                    case 1:
+                        copyText += "[url=https://pfq.link/?" + summary + "][img]https://pfq.link/?" + summary + "=platform.png[/img][/url]";
+                        break;
+                    case 2:
+                        copyText += "[pkmnpanel=" + summary + "]";
+                        break;
+                }
+            });
+
+            navigator.clipboard.writeText(copyText);
+            message = "Display codes copied!";
+        }
+
+        $("#btnDisplaycodes").html(message);
+        setTimeout(function() {
+            $("#btnDisplaycodes").html("Get display codes");
+        }, 2000);
+    }
+})();
