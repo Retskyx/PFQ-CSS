@@ -1,6 +1,6 @@
-<sup>None of these were created by me, but I have edited them to try to keep them updated.</sup>
+<sup>None of these were created by me, but I have edited them to try to keep them updated. </sup> 
 <sup>Many of the original codes are from [Winterbraid](https://github.com/Winterbraid/pokefarm-custom-css/tree/main ). </sup>  
-<sup>I have either added my own updates to them or modified them for my preferences. I will log what changes have been made here.</sup>
+<sup>I will log what changes have been made here. </sup>
 
 ## Changes
 
