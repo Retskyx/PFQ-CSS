@@ -764,7 +764,11 @@ div.egg[style*="pkmn"]::before {
 #egglist > div:has(img[src*='img/pkmn/m/i/y/z.png'])::before, div.egg[style*='img/pkmn/m/i/y/z.png']::before, #dcegglist > li > img[src*='img/pkmn/m/i/y/z.png'] + div::after {content: "Elecko";}
 #egglist > div:has(img[src*='img/pkmn/h/h/i/w.png'])::before, div.egg[style*='img/pkmn/h/h/i/w.png']::before, #dcegglist > li > img[src*='img/pkmn/h/h/i/w.png'] + div::after {content: "Lucky Duck";}
 #egglist > div:has(img[src*='img/pkmn/h/l/u/d.png'])::before, div.egg[style*='img/pkmn/h/l/u/d.png']::before, #dcegglist > li > img[src*='img/pkmn/h/l/u/d.png'] + div::after {content: "Kaway";}
-
 #egglist > div:has(img[src*='img/pkmn/5/v/n/z.png'])::before, div.egg[style*='img/pkmn/5/v/n/z.png']::before, #dcegglist > li > img[src*='img/pkmn/5/v/n/z.png'] + div::after {content: "Xolosteen";}
 #egglist > div:has(img[src*='img/pkmn/j/1/7/w.png'])::before, div.egg[style*='img/pkmn/j/1/7/w.png']::before, #dcegglist > li > img[src*='img/pkmn/j/1/7/w.png'] + div::after {content: "Naranfun";}
 #egglist > div:has(img[src*='img/pkmn/y/c/n/q.png'])::before, div.egg[style*='img/pkmn/y/c/n/q.png']::before, #dcegglist > li > img[src*='img/pkmn/y/c/n/q.png'] + div::after {content: "DeepSea Sableye";}
+
+#egglist > div:has(img[src*='img/pkmn/r/f/9/s.png'])::before, div.egg[style*='img/pkmn/r/f/9/s.png']::before, #dcegglist > li > img[src*='img/pkmn/r/f/9/s.png'] + div::after {content: "Pipling";}
+#egglist > div:has(img[src*='img/pkmn/v/y/6/3.png'])::before, div.egg[style*='img/pkmn/v/y/6/3.png']::before, #dcegglist > li > img[src*='img/pkmn/v/y/6/3.png'] + div::after {content: "Plotl";}
+#egglist > div:has(img[src*='img/pkmn/a/u/4/q.png'])::before, div.egg[style*='img/pkmn/a/u/4/q.png']::before, #dcegglist > li > img[src*='img/pkmn/a/u/4/q.png'] + div::after {content: "Love Azurill";}
+
