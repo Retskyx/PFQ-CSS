@@ -775,12 +775,11 @@ div.egg[style*="pkmn"]::before {
 #egglist > div:has(img[src*='img/pkmn/v/y/6/3.png'])::before, div.egg[style*='img/pkmn/v/y/6/3.png']::before, #dcegglist > li > img[src*='img/pkmn/v/y/6/3.png'] + div::after {content: "Plotl";}
 #egglist > div:has(img[src*='img/pkmn/a/u/4/q.png'])::before, div.egg[style*='img/pkmn/a/u/4/q.png']::before, #dcegglist > li > img[src*='img/pkmn/a/u/4/q.png'] + div::after {content: "Love Azurill";}
 #egglist > div:has(img[src*='img/pkmn/m/g/w/a.png'])::before, div.egg[style*='img/pkmn/m/g/w/a.png']::before, #dcegglist > li > img[src*='img/pkmn/m/g/w/a.png'] + div::after {content: "Love Marill";}
-
 #egglist > div:has(img[src*='img/pkmn/v/z/7/v.png'])::before, div.egg[style*='img/pkmn/v/z/7/v.png']::before, #dcegglist > li > img[src*='img/pkmn/v/z/7/v.png'] + div::after {content: "Valenna";}
 #egglist > div:has(img[src*='img/pkmn/v/l/j/4.png'])::before, div.egg[style*='img/pkmn/v/l/j/4.png']::before, #dcegglist > li > img[src*='img/pkmn/v/l/j/4.png'] + div::after {content: "Pyrogonal";}
 #egglist > div:has(img[src*='img/pkmn/1/j/7/5.png'])::before, div.egg[style*='img/pkmn/1/j/7/5.png']::before, #dcegglist > li > img[src*='img/pkmn/1/j/7/5.png'] + div::after {content: "Eclore";}
 #egglist > div:has(img[src*='img/pkmn/k/9/m/6.png'])::before, div.egg[style*='img/pkmn/k/9/m/6.png']::before, #dcegglist > li > img[src*='img/pkmn/k/9/m/6.png'] + div::after {content: "Kyojinis";}
 
-#egglist > div:has(img[src*='img/pkmn/1/7/t/f.png'])::before, div.egg[style*='img/pkmn/1/7/t/f.png']::before, #dcegglist > li > img[src*='img/pkmn/1/7/t/f.png'] + div::after {content: "S.41 A";}
-#egglist > div:has(img[src*='img/pkmn/9/y/w/1.png'])::before, div.egg[style*='img/pkmn/9/y/w/1.png']::before, #dcegglist > li > img[src*='img/pkmn/9/y/w/1.png'] + div::after {content: "S.41 B";}
+#egglist > div:has(img[src*='img/pkmn/1/7/t/f.png'])::before, div.egg[style*='img/pkmn/1/7/t/f.png']::before, #dcegglist > li > img[src*='img/pkmn/1/7/t/f.png'] + div::after {content: "Secreta";}
+#egglist > div:has(img[src*='img/pkmn/9/y/w/1.png'])::before, div.egg[style*='img/pkmn/9/y/w/1.png']::before, #dcegglist > li > img[src*='img/pkmn/9/y/w/1.png'] + div::after {content: "Calloze";}
 
